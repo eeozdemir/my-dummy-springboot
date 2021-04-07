@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-springboot
+  labels:
+    app: my-springboot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-springboot
+  template:
+    metadata:
+      labels:
+        app: my-springboot
+    spec:
+      containers:
+      - name: my-springboot
+        image: ozdemire/springboot
+        ports:
+        - containerPort: 8080
