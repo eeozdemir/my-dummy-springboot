@@ -327,3 +327,5 @@ Cluster'ı görüntülemek ve çalışmayı tamamladıktan sonra silmek için a�
 $ eksctl get cluster --region us-east-1
 $ eksctl delete cluster mycluster --region us-east-1
 ```
+
+Cluster'ı sildikten sonra EC2 Jenkins Server intance ı terminate/stop ederek çalışmamı tamamladım.
