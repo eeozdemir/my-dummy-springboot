@@ -26,11 +26,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker login -u ozdemire -p 3154500Emre.'
-                //sh 'docker pull ozdemire/lastspringboot'
-                // sh 'docker run -d -p 80:8080 <imagename>'
                 //sh 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.35.0/deploy/static/provider/aws/deploy.yaml'
-                sh 'kubectl apply -f .'
-
+                sh 'kubectl apply -f k8s'
             }
         }
 
