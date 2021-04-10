@@ -13,21 +13,20 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t lastspringboot .'
+                sh 'docker build -t ozdemire/lastspringboot .'
                 sh 'docker image ls'
             }
         }
         stage('Push Image to DockerHub') {
             steps {
                 sh 'docker login -u ozdemire -p 3154500Emre.'
-                //sh 'docker push <username>/<imagename>'
-                sh 'docker tag lastspringboot ozdemire/lastspringboot:latest'
+                sh 'docker push ozdemire/lastspringboot'
             }
         }
         stage('Deploy') {
             steps {
                 sh 'docker login -u ozdemire -p 3154500Emre.'
-                sh 'docker pull ozdemire/lastspringboot'
+                //sh 'docker pull ozdemire/lastspringboot'
                 // sh 'docker run -d -p 80:8080 <imagename>'
                 sh 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.35.0/deploy/static/provider/aws/deploy.yaml'
                 sh 'kubectl apply -f .'
